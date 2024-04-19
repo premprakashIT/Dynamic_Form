@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <style>
+        body{
+            background-color: aqua;
+        }
+        
          .modal-body dd{
     border: 1px solid rgb(19, 17, 17); /* Example: Red border */
 }
@@ -12,10 +16,27 @@
 background-color: rgb(186, 226, 198);
 }
     </style>
+    <script>
+        function SubmitClick(){
+            document.getElementById("detailsContainer").style.display="block";
+            document.getElementById("registerContainer").style.display="none";
+            document.getElementById("lblName").innerHTML=document.getElementById("txtName").value;
+            document.getElementById("lblPrice").innerHTML=document.getElementById("txtPrice").value;
+            document.getElementById("lblShipped").innerHTML=document.getElementById("lstCities").value;
+            stock="";
+            stockCheckBox = document.getElementById("optStock");
+            if(stockCheckBox.checked){
+                stock="Available";
+            }else{
+                stock="Out of Stock";
+            }
+            document.getElementById("lblStock").innerHTML=stock;
+        }
+    </script>
 
 </head>
 <body class="container-fluid">
-    <h1>Register New Product <button class="btn btn-primary" data-bs-target="#registerProduct" data-bs-toggle="modal">Register</button></h1>
+   <div class="mt-3" id="registerContainer"> <button class="btn btn-primary" data-bs-target="#registerProduct" data-bs-toggle="modal">Fill To Register</button></h1></div>
     <div class="modal" id="registerProduct">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -26,13 +47,13 @@ background-color: rgb(186, 226, 198);
                 <div class="modal-body">
                     <dl>
                         <dt>Name</dt>
-                        <dd><input type="text" class="form-control"></dd>
+                        <dd><input type="text" id="txtName" class="form-control"></dd>
                         <dt>Price</dt>
-                        <dd><input type="text" class="form-control"></dd>
+                        <dd><input type="text" id="txtPrice" class="form-control"></dd>
                         <dt>Shipped To</dt>
                         <!-- <dd><input type="text" class="form-control"></dd> -->
                         <dd>
-                            <select class="form-select">
+                            <select id="lstCities" class="form-select">
                                 <option>Delhi</option>
                                 <option>Hyderabad</option>
     
@@ -40,18 +61,33 @@ background-color: rgb(186, 226, 198);
                         </dd>
                         <dt>Stock</dt>
                         <dd class="form-switch">
-                            <input type="checkbox" class="form-check-input">Available
+                            <input  id="optStock" type="checkbox" class="form-check-input">Available
                         </dd>
 
                     </dl>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal" onclick="SubmitClick()">Submit</button>
                     <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
 
+    </div>
+    <div id="detailsContainer" style="display: none;">
+        <h2>Product Details:</h2>
+        <dl class="row">
+            <dt class="col-3">Name</dt>
+            <dd class="col-9" id="lblName"></dd>
+            <dt class="col-3">Price</dt>
+            <dd class="col-9" id="lblPrice"></dd>
+            <dt class="col-3">Shipped To</dt>
+            <dd class="col-9" id="lblShipped"></dd>
+            <dt class="col-3">Stock</dt>
+            <dd class="col-9" id="lblStock"></dd>
+
+        </dl>
+        <button class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#registerProduct">Edit</button>
     </div>
     
 
