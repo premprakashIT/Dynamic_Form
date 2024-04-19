@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>Dynamic Form</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+         .modal-body dd{
+    border: 1px solid rgb(19, 17, 17); /* Example: Red border */
+}
+.form-switch{
+background-color: rgb(186, 226, 198);
+}
+    </style>
+
+</head>
+<body class="container-fluid">
+    <h1>Register New Product <button class="btn btn-primary" data-bs-target="#registerProduct" data-bs-toggle="modal">Register</button></h1>
+    <div class="modal" id="registerProduct">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Register New Product: </h2>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd><input type="text" class="form-control"></dd>
+                        <dt>Price</dt>
+                        <dd><input type="text" class="form-control"></dd>
+                        <dt>Shipped To</dt>
+                        <!-- <dd><input type="text" class="form-control"></dd> -->
+                        <dd>
+                            <select class="form-select">
+                                <option>Delhi</option>
+                                <option>Hyderabad</option>
+    
+                            </select>
+                        </dd>
+                        <dt>Stock</dt>
+                        <dd class="form-switch">
+                            <input type="checkbox" class="form-check-input">Available
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
